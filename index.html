@@ -60,6 +60,13 @@
 
   <!-- Hidden iframe to accept the form POST -->
   <iframe name="submitFrame" style="display:none;"></iframe>
+  <script>
+function onFormSubmitted() {
+  alert("Submitted successfully!");
+  document.getElementById("reviewForm").reset();
+  loadReviews();  // reload the latest reviews
+}
+</script>
 
   <form id="reviewForm"
         action="https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec"
