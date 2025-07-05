@@ -73,69 +73,67 @@
     <label for="visitDate">Date of Visit</label>
     <input type="date" id="visitDate" name="visitDate" required>
 
-<!-- Eateries Section -->
-<section id="eateries">
-  <h2>Eateries</h2>
+<label for="eaterie">Select Eaterie</label>
 
-  <!-- 1. Hostel Messes -->
-  <label for="hostelMesses">Hostel Messes</label>
-  <select id="hostelMesses" name="hostelMesses" required>
-    <option value="" disabled selected>Select a hostel mess</option>
-    <option>Hostel 1 Mess</option>
-    <option>Hostel 2 Mess</option>
-    <option>Hostel 3 Mess</option>
-    <option>Hostel 5 Mess</option>
-    <option>Hostel 6 Mess</option>
-    <option>Hostel 9 Mess</option>
-    <option>Hostel 10 Mess</option>
-    <option>Hostel 11 Mess</option>
-    <option>Hostel 12 Mess</option>
-    <option>Hostel 13 Mess</option>
-    <option>Hostel 14 Mess</option>
-    <option>Hostel 15 Mess</option>
-    <option>Hostel 16 Mess</option>
-    <option>Hostel 17 Mess</option>
-    <option>Hostel 18 Mess</option>
-  </select>
+<select id="hostelMess" onchange="handleDropdownChange(this)">
+  <option value="">-- Hostel Messes --</option>
+  <option value="Hostel 1 Mess">Hostel 1 Mess</option>
+  <option value="Hostel 2 Mess">Hostel 2 Mess</option>
+  <option value="Hostel 3 Mess">Hostel 3 Mess</option>
+  <option value="Hostel 5 Mess">Hostel 5 Mess</option>
+  <option value="Hostel 6 Mess">Hostel 6 Mess</option>
+  <option value="Hostel 9 Mess">Hostel 9 Mess</option>
+  <option value="Hostel 10 Mess">Hostel 10 Mess</option>
+  <option value="Hostel 11 Mess">Hostel 11 Mess</option>
+  <option value="Hostel 12 Mess">Hostel 12 Mess</option>
+  <option value="Hostel 13 Mess">Hostel 13 Mess</option>
+  <option value="Hostel 14 Mess">Hostel 14 Mess</option>
+  <option value="Hostel 15 Mess">Hostel 15 Mess</option>
+  <option value="Hostel 16 Mess">Hostel 16 Mess</option>
+  <option value="Hostel 17 Mess">Hostel 17 Mess</option>
+  <option value="Hostel 18 Mess">Hostel 18 Mess</option>
+</select>
 
-  <!-- 2. Hostel Night‑Canteens -->
-  <label for="hostelNightCanteens">Hostel Night‑Canteens</label>
-  <select id="hostelNightCanteens" name="hostelNightCanteens" required>
-    <option value="" disabled selected>Select a night‑canteen</option>
-    <option>H2 Canteen</option>
-    <option>H5 Canteen</option>
-    <option>H6 Canteen</option>
-    <option>H10 Canteen</option>
-    <option>H12‑13‑14 Canteen</option>
-    <option>H15 Canteen</option>
-  </select>
+<select id="nightCanteens" onchange="handleDropdownChange(this)">
+  <option value="">-- Night Canteens --</option>
+  <option value="H13 Night Canteen">H13 Night Canteen</option>
+  <option value="H14 Night Canteen">H14 Night Canteen</option>
+  <option value="H15 Night Canteen">H15 Night Canteen</option>
+  <option value="H16 Night Canteen">H16 Night Canteen</option>
+  <option value="H18 Night Canteen">H18 Night Canteen</option>
+</select>
 
-  <!-- 3. Institute‑Wide Eateries & Cafés -->
-  <label for="instituteEateries">Institute‑Wide Eateries &amp; Cafés</label>
-  <select id="instituteEateries" name="instituteEateries" required>
-    <option value="" disabled selected>Select an eatery / café</option>
-    <option>Café Coffee Day (CCD)</option>
-    <option>Domino’s</option>
-    <option>Chaayos (near SOM)</option>
-    <option>Chaayos (H5)</option>
-    <option>Amul Parlour</option>
-    <option>Aromas Dhaba</option>
-    <option>Gulmohar Garden</option>
-    <option>Gulmohar Restaurant</option>
-    <option>Café 92</option>
-    <option>Civil Cafe</option>
-    <option>H3 Juice &amp; Fruit</option>
-    <option>Health Juice Centre</option>
-    <option>Kresit Canteen</option>
-    <option>Shiru Cafe</option>
-    <option>Library Cafeteria</option>
-    <option>Staff Canteen</option>
-    <option>CheA Canteen</option>
-    <option>EE Canteen</option>
-    <option>Corn Shop</option>
-  </select>
-</section>
+<select id="instituteEateries" onchange="handleDropdownChange(this)">
+  <option value="">-- Institute Eateries --</option>
+  <option value="Garnish Canteen">Garnish Canteen</option>
+  <option value="Gulmohar Restaurant">Gulmohar Restaurant</option>
+  <option value="IDC Canteen">IDC Canteen</option>
+  <option value="MB Canteen">MB Canteen</option>
+  <option value="NC Canteen">NC Canteen</option>
+  <option value="QTube Cafe">QTube Cafe</option>
+  <option value="Red Chillies">Red Chillies</option>
+  <option value="Ruchi">Ruchi</option>
+  <option value="Staff Canteen">Staff Canteen</option>
+  <option value="Tansa Canteen">Tansa Canteen</option>
+  <option value="Y-Point Canteen">Y-Point Canteen</option>
+</select>
 
+<!-- Hidden input that will carry the selected eatery -->
+<input type="hidden" id="eaterie" name="eaterie" required>
+
+<script>
+  function handleDropdownChange(changedDropdown) {
+    // Reset the other dropdowns
+    ['hostelMess', 'nightCanteens', 'instituteEateries'].forEach(id => {
+      if (id !== changedDropdown.id) {
+        document.getElementById(id).selectedIndex = 0;
+      }
+    });
+
+    // Set the hidden input value
+    document.getElementById("eaterie").value = changedDropdown.value;
+  }
+</script>
 
     <label>Overall Star Rating:</label>
     <div class="stars">
