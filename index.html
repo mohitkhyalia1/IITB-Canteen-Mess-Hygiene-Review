@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IITB Canteen & Mess Hygiene Complaint Form</title>
+  <style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f7f7f7;
+  }
+  h1 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  form, .reviews {
+    background: #fff;
+    max-width: 800px;
+    width: 95%;
+    margin: 30px auto 20px auto;
+    padding: 24px 20px 20px 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  label {
+    display: block;
+    margin-top: 18px;
+    font-weight: bold;
+  }
+  input[type="text"], input[type="email"], input[type="date"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 7px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background: #fafafa;
+    transition: border 0.2s;
+  }
+  input[type="text"]:focus, input[type="email"]:focus, input[type="date"]:focus, textarea:focus, select:focus {
+    border: 1.5px solid #0078d7;
+    outline: none;
+    background: #fff;
+  }
+  .inline {
+    display: inline-block;
+    margin-right: 12px;
+    margin-top: 8px;
+    font-size: 15px;
+  }
+  .stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    margin-top: 7px;
+    margin-bottom: 5px;
+  }
+  .stars input {
+    display: none;
+  }
+  .stars label {
+    float: none;
+    padding: 5px;
+    font-size: 28px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .stars input:checked ~ label,
+  .stars label:hover,
+  .stars label:hover ~ label {
+    color: #f90;
+  }
+  .review {
+    border-bottom: 1px solid #eee;
+    padding: 12px 0;
+  }
+  .review h4 {
+    margin: 0 0 5px 0;
+  }
+  button {
+    margin-top: 24px;
+    padding: 12px 0;
+    font-size: 17px;
+    width: 100%;
+    background: #0078d7;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  button:hover {
+    background: #005fa3;
+  }
+  @media (max-width: 600px) {
+    form, .reviews {
+      padding: 12px 4vw 16px 4vw;
+    }
+    .inline {
+      display: block;
+      margin-right: 0;
+    }
+    .stars label {
+      font-size: 22px;
+      padding: 3px;
+    }
+    h1 {
+      font-size: 22px;
+      margin-top: 18px;
+    }
+    input[type="text"], input[type="email"], input[type="date"], textarea, select {
+      font-size: 15px;
+      padding: 8px;
+    }
+    button {
+      font-size: 15px;
+      padding: 10px 0;
+    }
+  }
+  </style>
+</head>
+<body>
+  <h1>IITB Canteen & Mess Hygiene Complaint Form</h1>
+
+  <form id="reviewForm">
+    <label for="email">Your IITB Email</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="visitDate">Date of Visit</label>
+    <input type="date" id="visitDate" name="visitDate" required>
+
+    <label for="eaterie">Eaterie Name</label>
+    <input type="text" id="eaterie" name="eaterie" required>
+
+    <!-- Overall Star Rating -->
+    <label>Overall Star Rating:</label>
+    <div class="stars">
+      <input type="radio" id="overall5" name="overallRating" value="5"><label for="overall5">&#9733;</label>
+      <input type="radio" id="overall4" name="overallRating" value="4"><label for="overall4">&#9733;</label>
+      <input type="radio" id="overall3" name="overallRating" value="3"><label for="overall3">&#9733;</label>
+      <input type="radio" id="overall2" name="overallRating" value="2"><label for="overall2">&#9733;</label>
+      <input type="radio" id="overall1" name="overallRating" value="1"><label for="overall1">&#9733;</label>
+    </div>
+
+    <!-- Food Quality -->
+    <label>Food Quality:</label>
+    <div class="stars">
+      <input type="radio" id="food5" name="foodRating" value="5"><label for="food5">&#9733;</label>
+      <input type="radio" id="food4" name="foodRating" value="4"><label for="food4">&#9733;</label>
+      <input type="radio" id="food3" name="foodRating" value="3"><label for="food3">&#9733;</label>
+      <input type="radio" id="food2" name="foodRating" value="2"><label for="food2">&#9733;</label>
+      <input type="radio" id="food1" name="foodRating" value="1"><label for="food1">&#9733;</label>
+    </div>
+
+    <!-- Cleanliness & Hygiene -->
+    <label>Cleanliness & Hygiene:</label>
+    <div class="stars">
+      <input type="radio" id="hygiene5" name="hygieneRating" value="5"><label for="hygiene5">&#9733;</label>
+      <input type="radio" id="hygiene4" name="hygieneRating" value="4"><label for="hygiene4">&#9733;</label>
+      <input type="radio" id="hygiene3" name="hygieneRating" value="3"><label for="hygiene3">&#9733;</label>
+      <input type="radio" id="hygiene2" name="hygieneRating" value="2"><label for="hygiene2">&#9733;</label>
+      <input type="radio" id="hygiene1" name="hygieneRating" value="1"><label for="hygiene1">&#9733;</label>
+    </div>
+
+    <label>Type of Service</label>
+    <div class="inline"><input type="radio" name="serviceType" value="Dine In" required> Dine In</div>
+    <div class="inline"><input type="radio" name="serviceType" value="Takeaway"> Takeaway</div>
+    <div class="inline"><input type="radio" name="serviceType" value="Delivery"> Delivery</div>
+
+    <label>Meal Time</label>
+    <div class="inline"><input type="checkbox" name="mealTime" value="Breakfast"> Breakfast</div>
+    <div class="inline"><input type="checkbox" name="mealTime" value="Brunch"> Brunch</div>
+    <div class="inline"><input type="checkbox" name="mealTime" value="Lunch"> Lunch</div>
+    <div class="inline"><input type="checkbox" name="mealTime" value="Dinner"> Dinner</div>
+    <div class="inline"><input type="checkbox" name="mealTime" value="Snacks"> Snacks</div>
+    <div class="inline"><input type="checkbox" name="mealTime" value="Other"> Other</div>
+
+    <label>Hygiene Complaints (Check all that apply)</label>
+    <div><input type="checkbox" name="hygieneComplaints" value="Unclean tables or floors"> Unclean tables or floors</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Dirty utensils or plates"> Dirty utensils or plates</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="No hand-wash station"> No hand-wash station</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Pests (flies/rodents) noticed"> Pests (flies/rodents) noticed</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Foul smells in dining area"> Foul smells in dining area</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Greasy or sticky counters/surfaces"> Greasy or sticky counters/surfaces</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Food spillage not cleaned"> Food spillage not cleaned</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Improper food storage"> Improper food storage</div>
+
+    <label for="detailedFeedback">Detailed Feedback</label>
+    <textarea id="detailedFeedback" name="detailedFeedback" rows="4" required></textarea>
+
+    <!-- Picture Upload Section -->
+    <label for="reviewImage">Upload a Picture (optional)</label>
+    <input 
+      type="file" 
+      id="reviewImage" 
+      name="reviewImage" 
+      accept="image/*" 
+      capture="environment"
+      style="margin-bottom: 16px;"
+    >
+
+    <button type="submit">Submit Review</button>
+  </form>
+
+  <div class="reviews">
+    <h2>Recent Reviews</h2>
+    <div id="reviewsList"></div>
+  </div>
+
+  <script>
+  function loadReviews() {
+    return JSON.parse(localStorage.getItem('canteenReviews') || '[]');
+  }
+
+  function saveReview(data) {
+    const reviews = loadReviews();
+    reviews.unshift(data);
+    localStorage.setItem('canteenReviews', JSON.stringify(reviews));
+  }
+
+  function renderReviews() {
+    const reviews = loadReviews();
+    const container = document.getElementById('reviewsList');
+    container.innerHTML = '';
+    reviews.forEach(r => {
+      const div = document.createElement('div');
+      div.className = 'review';
+      div.innerHTML = `<h4>${r.eaterie}</h4>
+          <p>
+            <strong>Overall:</strong> ${r.overallRating || '-'}★ |
+            <strong>Food:</strong> ${r.foodRating || '-'}★ |
+            <strong>Hygiene:</strong> ${r.hygieneRating || '-'}★
+          </p>
+          <p><strong>Date:</strong> ${r.visitDate}</p>
+          <p><strong>Email:</strong> ${r.email}</p>
+          <p><strong>Service:</strong> ${r.serviceType}</p>
+          <p><strong>Meal:</strong> ${r.mealTime}</p>
+          <p><strong>Hygiene Complaints:</strong> ${r.hygieneComplaints}</p>
+          <p><strong>Feedback:</strong> ${r.detailedFeedback}</p>
+          ${r.image ? `<img src="${r.image}" alt="Review Image" style="max-width:180px;max-height:180px;border-radius:8px;margin-top:8px;">` : ''}
+          `;
+      container.appendChild(div);
+    });
+  }
+
+  document.getElementById('reviewForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
+    const hygieneTags = Array.from(form.querySelectorAll('input[name="hygieneComplaints"]:checked')).map(cb => cb.value).join(', ');
+    const mealTags = Array.from(form.querySelectorAll('input[name="mealTime"]:checked')).map(cb => cb.value).join(', ');
+    const serviceType = form.querySelector('input[name="serviceType"]:checked')?.value || '';
+    const fileInput = form.reviewImage;
+    const file = fileInput && fileInput.files && fileInput.files[0];
+
+    // Function to save and render review
+    function saveAndRender(imageDataUrl) {
+      const data = {
+        email: form.email.value,
+        visitDate: form.visitDate.value,
+        eaterie: form.eaterie.value,
+        overallRating: form.overallRating.value,
+        foodRating: form.foodRating.value,
+        hygieneRating: form.hygieneRating.value,
+        serviceType: serviceType,
+        mealTime: mealTags,
+        hygieneComplaints: hygieneTags,
+        detailedFeedback: form.detailedFeedback.value,
+        image: imageDataUrl || ''
+      };
+      saveReview(data);
+      form.reset();
+      renderReviews();
+    }
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(evt) {
+        saveAndRender(evt.target.result);
+      };
+      reader.readAsDataURL(file);
+    } else {
+      saveAndRender('');
+    }
+  });
+
+  renderReviews();
+  </script>
+</body>
+</html>
