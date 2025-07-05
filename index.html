@@ -215,47 +215,7 @@
     </button>
   </a>
 </div>
-
-  <div class="reviews">
-    <h2>Recent Reviews</h2>
-    <div id="reviewsList"></div>
-  </div>
-
   <script>
-  function loadReviews() {
-    return JSON.parse(localStorage.getItem('canteenReviews') || '[]');
-  }
-
-  function saveReview(data) {
-    const reviews = loadReviews();
-    reviews.unshift(data);
-    localStorage.setItem('canteenReviews', JSON.stringify(reviews));
-  }
-
-  function renderReviews() {
-    const reviews = loadReviews();
-    const container = document.getElementById('reviewsList');
-    container.innerHTML = '';
-    reviews.forEach(r => {
-      const div = document.createElement('div');
-      div.className = 'review';
-      div.innerHTML = `<h4>${r.eaterie}</h4>
-          <p>
-            <strong>Overall:</strong> ${r.overallRating || '-'}★ |
-            <strong>Food:</strong> ${r.foodRating || '-'}★ |
-            <strong>Hygiene:</strong> ${r.hygieneRating || '-'}★
-          </p>
-          <p><strong>Date:</strong> ${r.visitDate}</p>
-          <p><strong>Email:</strong> ${r.email}</p>
-          <p><strong>Service:</strong> ${r.serviceType}</p>
-          <p><strong>Meal:</strong> ${r.mealTime}</p>
-          <p><strong>Hygiene Complaints:</strong> ${r.hygieneComplaints}</p>
-          <p><strong>Feedback:</strong> ${r.detailedFeedback}</p>
-          ${r.image ? `<img src="${r.image}" alt="Review Image" style="max-width:180px;max-height:180px;border-radius:8px;margin-top:8px;">` : ''}
-          `;
-      container.appendChild(div);
-    });
-  }
 
   document.getElementById('reviewForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -310,8 +270,6 @@
       saveAndRender('');
     }
   });
-
-  renderReviews();
   </script>
 </body>
 </html>
