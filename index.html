@@ -7,15 +7,19 @@
     body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7 }
     h1 { text-align:center; margin:30px 0 10px }
     form, .reviews {
-      background:#fff; max-width:800px; width:95%; margin:30px auto;
-      padding:24px 20px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);
+      background:#fff;
+      max-width:800px;
+      width:95%;
+      margin:30px auto;
+      padding:24px 20px;
+      border-radius:12px;
+      box-shadow:0 2px 12px rgba(0,0,0,0.08);
     }
     label { display:block; margin-top:18px; font-weight:bold }
     input, textarea, select {
       width:100%; padding:10px; margin-top:7px;
       border:1px solid #ccc; border-radius:6px; background:#fafafa;
-      font-size:16px; box-sizing:border-box;
-      transition:border 0.2s;
+      font-size:16px; box-sizing:border-box; transition:border 0.2s;
     }
     input:focus, textarea:focus, select:focus {
       border:1.5px solid #0078d7; outline:none; background:#fff;
@@ -46,7 +50,7 @@
       form, .reviews { padding:12px 4vw }
       .inline { display:block; margin-right:0 }
       .stars label { font-size:22px; padding:3px }
-      h1 { font-size:22px; margin-top:18px }
+      h1{ font-size:22px; margin-top:18px }
       input, textarea, select, button { font-size:15px; padding:8px }
     }
   </style>
@@ -54,16 +58,13 @@
 <body>
   <h1>IITB Canteen & Mess Hygiene Complaint Form</h1>
 
-  <!-- Hidden iframe to receive the POST response -->
-  <iframe name="submitFrame" style="display:none"></iframe>
+  <!-- Hidden iframe to accept the form POST -->
+  <iframe name="submitFrame" style="display:none;"></iframe>
 
-  <!--
-    We point the form directly at the Apps‑Script "exec" URL.
-    CORS is bypassed by using a classic form+iframe pattern.
-  -->
   <form id="reviewForm"
-        action="https://script.google.com/macros/s/AKfycbyAAgOg8pYJUEBYEhXFaRii79m4TKZDKDp4n4fgqRrWRI0p2yF4rZCuRhBWpDe93WegqQ/exec"
+        action="https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec"
         method="POST" target="submitFrame" enctype="multipart/form-data">
+
     <label for="email">Your IITB Email</label>
     <input type="email" id="email" name="email" required>
 
@@ -117,9 +118,9 @@
     <div><input type="checkbox" name="hygieneComplaints" value="Unclean tables or floors"> Unclean tables or floors</div>
     <div><input type="checkbox" name="hygieneComplaints" value="Dirty utensils or plates"> Dirty utensils or plates</div>
     <div><input type="checkbox" name="hygieneComplaints" value="No hand-wash station"> No hand-wash station</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Pests noticed"> Pests (flies/rodents) noticed</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Pests (flies/rodents) noticed"> Pests noticed</div>
     <div><input type="checkbox" name="hygieneComplaints" value="Foul smells in dining area"> Foul smells in dining area</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Greasy counters"> Greasy or sticky counters/surfaces</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Greasy or sticky counters/surfaces"> Greasy counters</div>
     <div><input type="checkbox" name="hygieneComplaints" value="Food spillage not cleaned"> Food spillage not cleaned</div>
     <div><input type="checkbox" name="hygieneComplaints" value="Improper food storage"> Improper food storage</div>
 
@@ -139,56 +140,43 @@
   </div>
 
   <script>
-    // JSONP loader to read data (no CORS)
+    // JSONP loader: no CORS
     function loadReviews() {
-      const cb = "renderReviews";
-      const s = document.createElement("script");
-      s.src = 
-        "https://script.google.com/macros/s/AKfycbyAAgOg8pYJUEBYEhXFaRii79m4TKZDKDp4n4fgqRrWRI0p2yF4rZCuRhBWpDe93WegqQ/exec"
-        + "?callback=" + cb;
-      document.body.appendChild(s);
+      const callbackName = "renderReviews";
+      const script = document.createElement("script");
+      script.src = 
+        "https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec"
+        + "?callback=" + callbackName;
+      document.body.appendChild(script);
     }
 
-    // This gets called by JSONP response: doGet must wrap in callback(...)
+    // Called by the JSONP response
     function renderReviews(rows) {
-      // skip header row, take last 5, reverse to show newest first
       const data = rows.slice(1).slice(-5).reverse();
       const container = document.getElementById("reviewsList");
       container.innerHTML = "";
       data.forEach(r => {
-        // r: [Email, Date, Eaterie, serviceType, mealTime,
-        //     overallRating, foodRating, hygieneRating,
-        //     hygieneComplaints, detailedFeedback, reviewImage?]
         const div = document.createElement("div");
         div.className = "review";
         div.innerHTML = `
           <h4>${r[2]}</h4>
-          <p>
-            <strong>Date:</strong> ${r[1]}
-            | <strong>Email:</strong> ${r[0]}
-          </p>
-          <p>
-            <strong>Service:</strong> ${r[3]}
-            | <strong>Meal:</strong> ${r[4]}
-          </p>
-          <p>
-            <strong>Ratings:</strong>
-            Overall ${r[5]}★ |
-            Food ${r[6]}★ |
-            Hygiene ${r[7]}★
-          </p>
+          <p><strong>Date:</strong> ${r[1]} | <strong>Email:</strong> ${r[0]}</p>
+          <p><strong>Service:</strong> ${r[3]} | <strong>Meal:</strong> ${r[4]}</p>
+          <p><strong>Ratings:</strong> Overall ${r[5]}★ | Food ${r[6]}★ | Hygiene ${r[7]}★</p>
           <p><strong>Complaints:</strong> ${r[8]}</p>
           <p>${r[9]}</p>
-          ${r[10] 
-            ? `<img src="${r[10]}" style="max-width:150px; margin-top:8px;border-radius:6px;">`
-            : ""}
+          ${r[10] ? `<img src="${r[10]}" style="max-width:150px;margin-top:8px;border-radius:6px;">` : ""}
         `;
         container.appendChild(div);
       });
     }
 
-    // Kick off JSONP load on page load
+    // on page load
     loadReviews();
+
+    // after each form‑POST completes, reload reviews
+    document.querySelector("iframe[name=submitFrame]")
+            .onload = loadReviews;
   </script>
 </body>
 </html>
