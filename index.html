@@ -73,8 +73,69 @@
     <label for="visitDate">Date of Visit</label>
     <input type="date" id="visitDate" name="visitDate" required>
 
-    <label for="eaterie">Eaterie Name</label>
-    <input type="text" id="eaterie" name="eaterie" required>
+<!-- Eateries Section -->
+<section id="eateries">
+  <h2>Eateries</h2>
+
+  <!-- 1. Hostel Messes -->
+  <label for="hostelMesses">Hostel Messes</label>
+  <select id="hostelMesses" name="hostelMesses" required>
+    <option value="" disabled selected>Select a hostel mess</option>
+    <option>Hostel 1 Mess</option>
+    <option>Hostel 2 Mess</option>
+    <option>Hostel 3 Mess</option>
+    <option>Hostel 5 Mess</option>
+    <option>Hostel 6 Mess</option>
+    <option>Hostel 9 Mess</option>
+    <option>Hostel 10 Mess</option>
+    <option>Hostel 11 Mess</option>
+    <option>Hostel 12 Mess</option>
+    <option>Hostel 13 Mess</option>
+    <option>Hostel 14 Mess</option>
+    <option>Hostel 15 Mess</option>
+    <option>Hostel 16 Mess</option>
+    <option>Hostel 17 Mess</option>
+    <option>Hostel 18 Mess</option>
+  </select>
+
+  <!-- 2. Hostel Night‑Canteens -->
+  <label for="hostelNightCanteens">Hostel Night‑Canteens</label>
+  <select id="hostelNightCanteens" name="hostelNightCanteens" required>
+    <option value="" disabled selected>Select a night‑canteen</option>
+    <option>H2 Canteen</option>
+    <option>H5 Canteen</option>
+    <option>H6 Canteen</option>
+    <option>H10 Canteen</option>
+    <option>H12‑13‑14 Canteen</option>
+    <option>H15 Canteen</option>
+  </select>
+
+  <!-- 3. Institute‑Wide Eateries & Cafés -->
+  <label for="instituteEateries">Institute‑Wide Eateries &amp; Cafés</label>
+  <select id="instituteEateries" name="instituteEateries" required>
+    <option value="" disabled selected>Select an eatery / café</option>
+    <option>Café Coffee Day (CCD)</option>
+    <option>Domino’s</option>
+    <option>Chaayos (near SOM)</option>
+    <option>Chaayos (H5)</option>
+    <option>Amul Parlour</option>
+    <option>Aromas Dhaba</option>
+    <option>Gulmohar Garden</option>
+    <option>Gulmohar Restaurant</option>
+    <option>Café 92</option>
+    <option>Civil Cafe</option>
+    <option>H3 Juice &amp; Fruit</option>
+    <option>Health Juice Centre</option>
+    <option>Kresit Canteen</option>
+    <option>Shiru Cafe</option>
+    <option>Library Cafeteria</option>
+    <option>Staff Canteen</option>
+    <option>CheA Canteen</option>
+    <option>EE Canteen</option>
+    <option>Corn Shop</option>
+  </select>
+</section>
+
 
     <label>Overall Star Rating:</label>
     <div class="stars">
@@ -180,6 +241,20 @@
 
     // initial load
     loadReviews();
+    // Combine eatery dropdowns into one final "eaterie" value before submit
+document.getElementById("reviewForm").addEventListener("submit", function (e) {
+  const hostelMess = document.getElementById("hostelMesses").value;
+  const nightCanteen = document.getElementById("hostelNightCanteens").value;
+  const instituteEatery = document.getElementById("instituteEateries").value;
+
+  const selected = hostelMess || nightCanteen || instituteEatery;
+
+  const eaterieInput = document.createElement("input");
+  eaterieInput.type = "hidden";
+  eaterieInput.name = "eaterie";
+  eaterieInput.value = selected || "";
+  this.appendChild(eaterieInput);
+});
   </script>
 </body>
 </html>
