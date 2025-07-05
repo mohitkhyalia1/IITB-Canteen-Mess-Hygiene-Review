@@ -2,20 +2,69 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>IITB Canteen & Mess Hygiene Complaint Form</title>
+  <title>IITB Canteen &amp; Mess Hygiene Complaint Form</title>
   <style>
-    /* … your existing CSS … */
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7 }
+    h1 { text-align:center; margin:30px 0 10px }
+    form, .reviews {
+      background:#fff;
+      max-width:800px;
+      width:95%;
+      margin:30px auto;
+      padding:24px 20px;
+      border-radius:12px;
+      box-shadow:0 2px 12px rgba(0,0,0,0.08);
+    }
+    label { display:block; margin-top:18px; font-weight:bold }
+    input, textarea, select {
+      width:100%; padding:10px; margin-top:7px;
+      border:1px solid #ccc; border-radius:6px; background:#fafafa;
+      font-size:16px; box-sizing:border-box; transition:border 0.2s;
+    }
+    input:focus, textarea:focus, select:focus {
+      border:1.5px solid #0078d7; outline:none; background:#fff;
+    }
+    .inline { display:inline-block; margin-right:12px; margin-top:8px; font-size:15px }
+    .stars {
+      display:flex; flex-direction:row-reverse; justify-content:flex-start;
+      margin:7px 0 5px;
+    }
+    .stars input { display:none }
+    .stars label {
+      padding:5px; font-size:28px; color:#ccc; cursor:pointer;
+      transition:color 0.2s;
+    }
+    .stars input:checked ~ label,
+    .stars label:hover,
+    .stars label:hover ~ label { color:#f90 }
+    .review { border-bottom:1px solid #eee; padding:12px 0 }
+    .review h4 { margin:0 0 5px }
+    button {
+      margin-top:24px; padding:12px 0; font-size:17px;
+      width:100%; background:#0078d7; color:#fff;
+      border:none; border-radius:6px; cursor:pointer;
+      transition:background 0.2s;
+    }
+    button:hover { background:#005fa3 }
+    @media(max-width:600px) {
+      form, .reviews { padding:12px 4vw }
+      .inline { display:block; margin-right:0 }
+      .stars label { font-size:22px; padding:3px }
+      h1{ font-size:22px; margin-top:18px }
+      input, textarea, select, button { font-size:15px; padding:8px }
+    }
   </style>
 </head>
 <body>
-  <h1>IITB Canteen & Mess Hygiene Complaint Form</h1>
+  <h1>IITB Canteen &amp; Mess Hygiene Complaint Form</h1>
 
-  <!-- Hidden iframe to receive the POST response -->
-  <iframe name="submitFrame" style="display:none;" onload="onFormSubmitted()"></iframe>
+  <!-- Hidden iframe to receive the form POST (no CORS) -->
+  <iframe name="submitFrame" style="display:none" onload="onFormSubmitted()"></iframe>
 
   <form id="reviewForm"
         action="https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec"
-        method="POST" target="submitFrame"
+        method="POST"
+        target="submitFrame"
         enctype="multipart/form-data">
 
     <label for="email">Your IITB Email</label>
@@ -27,64 +76,38 @@
     <label for="eaterie">Eaterie Name</label>
     <input type="text" id="eaterie" name="eaterie" required>
 
-    <!-- Overall Star Rating -->
     <label>Overall Star Rating:</label>
     <div class="stars">
-      <input type="radio" id="overall5" name="overallRating" value="5">
-        <label for="overall5">&#9733;</label>
-      <input type="radio" id="overall4" name="overallRating" value="4">
-        <label for="overall4">&#9733;</label>
-      <input type="radio" id="overall3" name="overallRating" value="3">
-        <label for="overall3">&#9733;</label>
-      <input type="radio" id="overall2" name="overallRating" value="2">
-        <label for="overall2">&#9733;</label>
-      <input type="radio" id="overall1" name="overallRating" value="1">
-        <label for="overall1">&#9733;</label>
+      <input type="radio" id="overall5" name="overallRating" value="5"><label for="overall5">★</label>
+      <input type="radio" id="overall4" name="overallRating" value="4"><label for="overall4">★</label>
+      <input type="radio" id="overall3" name="overallRating" value="3"><label for="overall3">★</label>
+      <input type="radio" id="overall2" name="overallRating" value="2"><label for="overall2">★</label>
+      <input type="radio" id="overall1" name="overallRating" value="1"><label for="overall1">★</label>
     </div>
 
-    <!-- Food Quality -->
     <label>Food Quality:</label>
     <div class="stars">
-      <input type="radio" id="food5" name="foodRating" value="5">
-        <label for="food5">&#9733;</label>
-      <input type="radio" id="food4" name="foodRating" value="4">
-        <label for="food4">&#9733;</label>
-      <input type="radio" id="food3" name="foodRating" value="3">
-        <label for="food3">&#9733;</label>
-      <input type="radio" id="food2" name="foodRating" value="2">
-        <label for="food2">&#9733;</label>
-      <input type="radio" id="food1" name="foodRating" value="1">
-        <label for="food1">&#9733;</label>
+      <input type="radio" id="food5" name="foodRating" value="5"><label for="food5">★</label>
+      <input type="radio" id="food4" name="foodRating" value="4"><label for="food4">★</label>
+      <input type="radio" id="food3" name="foodRating" value="3"><label for="food3">★</label>
+      <input type="radio" id="food2" name="foodRating" value="2"><label for="food2">★</label>
+      <input type="radio" id="food1" name="foodRating" value="1"><label for="food1">★</label>
     </div>
 
-    <!-- Cleanliness & Hygiene -->
-    <label>Cleanliness & Hygiene:</label>
+    <label>Cleanliness &amp; Hygiene:</label>
     <div class="stars">
-      <input type="radio" id="hygiene5" name="hygieneRating" value="5">
-        <label for="hygiene5">&#9733;</label>
-      <input type="radio" id="hygiene4" name="hygieneRating" value="4">
-        <label for="hygiene4">&#9733;</label>
-      <input type="radio" id="hygiene3" name="hygieneRating" value="3">
-        <label for="hygiene3">&#9733;</label>
-      <input type="radio" id="hygiene2" name="hygieneRating" value="2">
-        <label for="hygiene2">&#9733;</label>
-      <input type="radio" id="hygiene1" name="hygieneRating" value="1">
-        <label for="hygiene1">&#9733;</label>
+      <input type="radio" id="hygiene5" name="hygieneRating" value="5"><label for="hygiene5">★</label>
+      <input type="radio" id="hygiene4" name="hygieneRating" value="4"><label for="hygiene4">★</label>
+      <input type="radio" id="hygiene3" name="hygieneRating" value="3"><label for="hygiene3">★</label>
+      <input type="radio" id="hygiene2" name="hygieneRating" value="2"><label for="hygiene2">★</label>
+      <input type="radio" id="hygiene1" name="hygieneRating" value="1"><label for="hygiene1">★</label>
     </div>
 
-    <!-- Type of Service -->
     <label>Type of Service</label>
-    <div class="inline">
-      <input type="radio" name="serviceType" value="Dine In" required> Dine In
-    </div>
-    <div class="inline">
-      <input type="radio" name="serviceType" value="Takeaway"> Takeaway
-    </div>
-    <div class="inline">
-      <input type="radio" name="serviceType" value="Delivery"> Delivery
-    </div>
+    <div class="inline"><input type="radio" name="serviceType" value="Dine In" required> Dine In</div>
+    <div class="inline"><input type="radio" name="serviceType" value="Takeaway"> Takeaway</div>
+    <div class="inline"><input type="radio" name="serviceType" value="Delivery"> Delivery</div>
 
-    <!-- Meal Time -->
     <label>Meal Time</label>
     <div class="inline"><input type="checkbox" name="mealTime" value="Breakfast"> Breakfast</div>
     <div class="inline"><input type="checkbox" name="mealTime" value="Brunch"> Brunch</div>
@@ -93,7 +116,6 @@
     <div class="inline"><input type="checkbox" name="mealTime" value="Snacks"> Snacks</div>
     <div class="inline"><input type="checkbox" name="mealTime" value="Other"> Other</div>
 
-    <!-- Hygiene Complaints -->
     <label>Hygiene Complaints (Check all that apply)</label>
     <div><input type="checkbox" name="hygieneComplaints" value="Unclean tables or floors"> Unclean tables or floors</div>
     <div><input type="checkbox" name="hygieneComplaints" value="Dirty utensils or plates"> Dirty utensils or plates</div>
@@ -104,41 +126,42 @@
     <div><input type="checkbox" name="hygieneComplaints" value="Food spillage not cleaned"> Food spillage not cleaned</div>
     <div><input type="checkbox" name="hygieneComplaints" value="Improper food storage"> Improper food storage</div>
 
-    <!-- Detailed Feedback -->
     <label for="detailedFeedback">Detailed Feedback</label>
     <textarea id="detailedFeedback" name="detailedFeedback" rows="4" required></textarea>
 
-    <!-- Picture Upload -->
     <label for="reviewImage">Upload a Picture (optional)</label>
-    <input type="file" id="reviewImage" name="reviewImage"   accept="image/*"
-           capture="environment" style="margin-bottom:16px;">
+    <input type="file" id="reviewImage" name="reviewImage" accept="image/*" capture="environment">
 
     <button type="submit">Submit Review</button>
   </form>
-
 
   <div class="reviews">
     <h2>Recent Reviews</h2>
     <div id="reviewsList"></div>
   </div>
 
-
   <script>
-    // JSONP loader: no CORS required
-    function loadReviews() {
-      const cb = "renderReviews";
-      const s = document.createElement("script");
-      s.src = 
-        "https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec"
-        + "?callback=" + cb;
-      document.body.appendChild(s);
+    // Called when the hidden iframe finishes the POST
+    function onFormSubmitted() {
+      alert("Submitted successfully!");
+      document.getElementById("reviewForm").reset();
+      loadReviews();
     }
 
-    // Called by the JSONP response
+    // JSONP loader to fetch & render last 5 reviews
+    function loadReviews() {
+      const script = document.createElement("script");
+      script.src = 
+        "https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec"
+        + "?callback=renderReviews";
+      document.body.appendChild(script);
+    }
+
+    // JSONP callback: rows = full sheet as array of arrays
     function renderReviews(rows) {
       const data = rows.slice(1).slice(-5).reverse();
-      const container = document.getElementById("reviewsList");
-      container.innerHTML = "";
+      const c = document.getElementById("reviewsList");
+      c.innerHTML = "";
       data.forEach(r => {
         const div = document.createElement("div");
         div.className = "review";
@@ -149,22 +172,13 @@
           <p><strong>Ratings:</strong> Overall ${r[5]}★ | Food ${r[6]}★ | Hygiene ${r[7]}★</p>
           <p><strong>Complaints:</strong> ${r[8]}</p>
           <p>${r[9]}</p>
-          ${r[10]
-            ? `<img src="${r[10]}" style="max-width:150px;margin-top:8px;border-radius:6px;">`
-            : ""}
+          ${r[10] ? `<img src="${r[10]}" style="max-width:150px;margin-top:8px;border-radius:6px;">` : ""}
         `;
-        container.appendChild(div);
+        c.appendChild(div);
       });
     }
 
-    // Show alert + reload reviews after each submit
-    function onFormSubmitted() {
-      alert("Submitted successfully!");
-      document.getElementById("reviewForm").reset();
-      loadReviews();
-    }
-
-    // kick things off on page load
+    // initial load
     loadReviews();
   </script>
 </body>
