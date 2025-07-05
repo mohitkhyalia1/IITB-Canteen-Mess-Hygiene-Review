@@ -192,7 +192,7 @@
 
     // ✅ Fetch and show latest 5 reviews
     function loadReviews() {
-      fetch("https://script.google.com/macros/s/AKfycbws5Ec2h2SvlaeYYbMeIb89fxY8bKipfZ3J4EeN9jCPI9M4jGu-gO3tC6OxqLAklyrw/exec") // <- Replace with your deployed "doGet" script URL
+      fetch("https://script.google.com/macros/s/AKfycbzRGWkzqyQk5h3a7epSFJHURAxgds7fe8udjd5nK22ZtpKjpfgB4v5l8XYBqtoW5VGtHg/exec") // <- Replace with your deployed "doGet" script URL
         .then(res => res.json())
         .then(rows => {
           const container = document.getElementById("latestReviews");
