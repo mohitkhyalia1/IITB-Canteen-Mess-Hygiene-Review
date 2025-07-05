@@ -1,217 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>IITB Canteen & Mess Hygiene Complaint Form</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #f7f7f7;
-    }
-    h1 {
-      text-align: center;
-      margin-top: 30px;
-      margin-bottom: 10px;
-    }
-    form, .reviews {
-      background: #fff;
-      max-width: 800px;
-      width: 95%;
-      margin: 30px auto;
-      padding: 24px 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    }
-    label {
-      display: block;
-      margin-top: 18px;
-      font-weight: bold;
-    }
-    input[type="text"], input[type="email"], input[type="date"], textarea, select {
-      width: 100%;
-      padding: 10px;
-      margin-top: 7px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      font-size: 16px;
-      background: #fafafa;
-    }
-    .inline {
-      display: inline-block;
-      margin-right: 12px;
-      margin-top: 8px;
-    }
-    .stars {
-      display: flex;
-      flex-direction: row-reverse;
-      justify-content: flex-start;
-      margin-top: 7px;
-      margin-bottom: 5px;
-    }
-    .stars input {
-      display: none;
-    }
-    .stars label {
-      font-size: 28px;
-      color: #ccc;
-      cursor: pointer;
-      padding: 5px;
-    }
-    .stars input:checked ~ label,
-    .stars label:hover,
-    .stars label:hover ~ label {
-      color: #f90;
-    }
-    button {
-      margin-top: 24px;
-      padding: 12px;
-      font-size: 17px;
-      width: 100%;
-      background: #0078d7;
-      color: #fff;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #005fa3;
-    }
+    /* [Same CSS as yours — unchanged for brevity] */
   </style>
 </head>
 <body>
   <h1>IITB Canteen & Mess Hygiene Complaint Form</h1>
-
   <form id="reviewForm">
-    <label for="email">Your IITB Email</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="visitDate">Date of Visit</label>
-    <input type="date" id="visitDate" name="visitDate" required>
-
-    <label for="eaterie">Eaterie Name</label>
-    <input type="text" id="eaterie" name="eaterie" required>
-
-    <!-- Star Ratings -->
-    <label>Overall Star Rating:</label>
-    <div class="stars">
-      <input type="radio" id="overall5" name="overallRating" value="5"><label for="overall5">&#9733;</label>
-      <input type="radio" id="overall4" name="overallRating" value="4"><label for="overall4">&#9733;</label>
-      <input type="radio" id="overall3" name="overallRating" value="3"><label for="overall3">&#9733;</label>
-      <input type="radio" id="overall2" name="overallRating" value="2"><label for="overall2">&#9733;</label>
-      <input type="radio" id="overall1" name="overallRating" value="1"><label for="overall1">&#9733;</label>
-    </div>
-
-    <label>Food Quality:</label>
-    <div class="stars">
-      <input type="radio" id="food5" name="foodRating" value="5"><label for="food5">&#9733;</label>
-      <input type="radio" id="food4" name="foodRating" value="4"><label for="food4">&#9733;</label>
-      <input type="radio" id="food3" name="foodRating" value="3"><label for="food3">&#9733;</label>
-      <input type="radio" id="food2" name="foodRating" value="2"><label for="food2">&#9733;</label>
-      <input type="radio" id="food1" name="foodRating" value="1"><label for="food1">&#9733;</label>
-    </div>
-
-    <label>Cleanliness & Hygiene:</label>
-    <div class="stars">
-      <input type="radio" id="hygiene5" name="hygieneRating" value="5"><label for="hygiene5">&#9733;</label>
-      <input type="radio" id="hygiene4" name="hygieneRating" value="4"><label for="hygiene4">&#9733;</label>
-      <input type="radio" id="hygiene3" name="hygieneRating" value="3"><label for="hygiene3">&#9733;</label>
-      <input type="radio" id="hygiene2" name="hygieneRating" value="2"><label for="hygiene2">&#9733;</label>
-      <input type="radio" id="hygiene1" name="hygieneRating" value="1"><label for="hygiene1">&#9733;</label>
-    </div>
-
-    <!-- Complaints -->
-    <label>Hygiene Complaints (Check all that apply)</label>
-    <div><input type="checkbox" name="hygieneComplaints" value="Unclean tables"> Unclean tables</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Dirty utensils"> Dirty utensils</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="No sanitizer"> No sanitizer</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Pests present"> Pests present</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Foul smell"> Foul smell</div>
-
-    <!-- Feedback -->
-    <label for="detailedFeedback">Detailed Feedback</label>
-    <textarea id="detailedFeedback" name="detailedFeedback" rows="4" required></textarea>
-
+    <!-- [Your full form structure — unchanged for brevity] -->
+    <!-- ... -->
     <button type="submit">Submit Review</button>
   </form>
 
-  <!-- Public Review Viewer -->
- 
   <div class="reviews">
     <h2>Recent Reviews</h2>
-    <div id="latestReviews"></div>
-  </div>
- 
-  <div style="text-align:center; margin-top: 30px;">
-    <a href="https://docs.google.com/spreadsheets/d/1j5Bq276MU-hQptWT6B137kmrUnYBQTCruj9pvdi5knA/edit?usp=sharing" target="_blank">
-      <button style="background:#28a745;">🔍 View Submitted Reviews</button>
-    </a>
+    <div id="reviewsList">Loading...</div>
   </div>
 
   <script>
-    document.getElementById("reviewForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      const form = e.target;
-      if (!form.email.value.trim().endsWith("@iitb.ac.in")) {
-        alert("Please submit using your IITB email (ending with @iitb.ac.in).");
-        return;
-      }
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxOisHcgj0fWkzO3I5MVRFRxpaOkzjLySKq3utk60oOU9h330jZhINIUpNmn2ppFfOrtQ/exec";
 
-      const hygieneTags = Array.from(form.querySelectorAll('input[name="hygieneComplaints"]:checked')).map(cb => cb.value).join(', ');
-
-      const data = {
-        email: form.email.value,
-        visitDate: form.visitDate.value,
-        eaterie: form.eaterie.value,
-        overallRating: form.overallRating.value,
-        foodRating: form.foodRating.value,
-        hygieneRating: form.hygieneRating.value,
-        hygieneComplaints: hygieneTags,
-        detailedFeedback: form.detailedFeedback.value
-      };
-
-      fetch("https://script.google.com/macros/s/AKfycbxP2_bwo_hlHwK6OO1J5JHqjQXSE5XYGnxm2HAN1Wxkjb_JqmfmzIJTz68zSi2Z76gjUA/exec", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      })
-      .then(res => res.text())
-      .then(msg => {
-        alert("Submitted successfully!");
-        form.reset();
-        loadReviews(); // refresh view
-      })
-      .catch(err => {
-        alert("Error submitting review.");
-        console.error(err);
+    // ✅ Load reviews using JSONP (bypasses CORS)
+    function showReviews(rows) {
+      const container = document.getElementById("reviewsList");
+      container.innerHTML = "";
+      rows.slice(-5).reverse().forEach(r => {
+        const div = document.createElement("div");
+        div.className = "review";
+        div.innerHTML = `
+          <h4>${r[2]}</h4>
+          <p><strong>Date:</strong> ${r[1]} | <strong>Email:</strong> ${r[0]}</p>
+          <p><strong>Service:</strong> ${r[3]} | <strong>Meal:</strong> ${r[4]}</p>
+          <p><strong>Ratings:</strong> Overall ${r[5]}★ | Food ${r[6]}★ | Hygiene ${r[7]}★</p>
+          <p><strong>Complaints:</strong> ${r[8]}</p>
+          <p>${r[9]}</p>`;
+        container.appendChild(div);
       });
-    });
-
-    // ✅ Fetch and show latest 5 reviews
-    function loadReviews() {
-      fetch("https://script.google.com/macros/s/AKfycbxP2_bwo_hlHwK6OO1J5JHqjQXSE5XYGnxm2HAN1Wxkjb_JqmfmzIJTz68zSi2Z76gjUA/exec") // <- Replace with your deployed "doGet" script URL
-        .then(res => res.json())
-        .then(rows => {
-          const container = document.getElementById("latestReviews");
-          container.innerHTML = "";
-          rows.slice(-5).reverse().forEach(r => {
-            const div = document.createElement("div");
-            div.className = "review";
-            div.innerHTML = `
-              <h4>${r[2]}</h4>
-              <p><strong>Date:</strong> ${r[1]} | <strong>Email:</strong> ${r[0]}</p>
-              <p><strong>Ratings:</strong> Overall ${r[3]}★ | Food ${r[4]}★ | Hygiene ${r[5]}★</p>
-              <p><strong>Complaints:</strong> ${r[6]}</p>
-              <p>${r[7]}</p>`;
-            container.appendChild(div);
-          });
-        });
     }
 
-    loadReviews();
+    // Inject script tag with callback to get around CORS
+    function loadReviewsJSONP() {
+      const script = document.createElement("script");
+      script.src = `${SCRIPT_URL}?callback=showReviews`;
+      document.body.appendChild(script);
+    }
+
+    // ✅ Handle form submission with FormData
+    document.getElementById("reviewForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const f = e.target;
+      if (!f.email.value.trim().endsWith("@iitb.ac.in")) {
+        return alert("Use your IITB email ending with @iitb.ac.in");
+      }
+
+      const fd = new FormData(f);
+      const mealVals = Array.from(f.querySelectorAll('input[name="mealTime"]:checked')).map(c => c.value).join(", ");
+      const cbVals = Array.from(f.querySelectorAll('input[name="hygieneComplaints"]:checked')).map(c => c.value).join(", ");
+      fd.set("mealTime", mealVals);
+      fd.set("hygieneComplaints", cbVals);
+
+      if (f.reviewImage.files[0]) {
+        const img = await new Promise((res) => {
+          const r = new FileReader();
+          r.onload = () => res(r.result);
+          r.readAsDataURL(f.reviewImage.files[0]);
+        });
+        fd.set("reviewImage", img);
+      }
+
+      fetch(SCRIPT_URL, {
+        method: "POST",
+        body: fd,
+      })
+        .then((r) => r.text())
+        .then(() => {
+          alert("Submitted successfully!");
+          f.reset();
+          loadReviewsJSONP(); // refresh reviews
+        })
+        .catch((err) => {
+          console.error(err);
+          alert("Error submitting review.");
+        });
+    });
+
+    loadReviewsJSONP();
   </script>
 </body>
 </html>
