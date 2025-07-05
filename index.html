@@ -171,7 +171,7 @@
         detailedFeedback: form.detailedFeedback.value
       };
 
-      fetch("https://script.google.com/macros/s/AKfycbxOisHcgj0fWkzO3I5MVRFRxpaOkzjLySKq3utk60oOU9h330jZhINIUpNmn2ppFfOrtQ/exec", {
+      fetch("https://script.google.com/macros/s/AKfycbxP2_bwo_hlHwK6OO1J5JHqjQXSE5XYGnxm2HAN1Wxkjb_JqmfmzIJTz68zSi2Z76gjUA/exec", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -192,7 +192,7 @@
 
     // ✅ Fetch and show latest 5 reviews
     function loadReviews() {
-      fetch("https://script.google.com/macros/s/AKfycbxOisHcgj0fWkzO3I5MVRFRxpaOkzjLySKq3utk60oOU9h330jZhINIUpNmn2ppFfOrtQ/exec") // <- Replace with your deployed "doGet" script URL
+      fetch("https://script.google.com/macros/s/AKfycbxP2_bwo_hlHwK6OO1J5JHqjQXSE5XYGnxm2HAN1Wxkjb_JqmfmzIJTz68zSi2Z76gjUA/exec") // <- Replace with your deployed "doGet" script URL
         .then(res => res.json())
         .then(rows => {
           const container = document.getElementById("latestReviews");
