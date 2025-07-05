@@ -59,7 +59,7 @@
   <h1>IITB Canteen & Mess Hygiene Complaint Form</h1>
 
   <!-- Hidden iframe to accept the form POST -->
-  <iframe name="submitFrame" style="display:none;"></iframe>
+  <iframe name="submitFrame" style="display:none;" onload="onFormSubmitted()"></iframe>
   <script>
 function onFormSubmitted() {
   alert("Submitted successfully!");
