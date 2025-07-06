@@ -2,18 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>IITB Canteen &amp; Mess Hygiene Complaint Form</title>
+  <title>IITB Canteen & Mess Hygiene Complaint Form</title>
   <style>
     body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7 }
     h1 { text-align:center; margin:30px 0 10px }
     form, .reviews {
-      background:#fff;
-      max-width:800px;
-      width:95%;
-      margin:30px auto;
-      padding:24px 20px;
-      border-radius:12px;
-      box-shadow:0 2px 12px rgba(0,0,0,0.08);
+      background:#fff; max-width:800px; width:95%; margin:30px auto;
+      padding:24px 20px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);
     }
     label { display:block; margin-top:18px; font-weight:bold }
     input, textarea, select {
@@ -58,7 +53,7 @@
 <body>
   <h1>IITB Canteen &amp; Mess Hygiene Complaint Form</h1>
 
-  <!-- Hidden iframe to receive the form POST (no CORS) -->
+  <!-- hidden iframe to accept POST and trigger onFormSubmitted -->
   <iframe name="submitFrame" style="display:none" onload="onFormSubmitted()"></iframe>
 
   <form id="reviewForm"
@@ -73,78 +68,64 @@
     <label for="visitDate">Date of Visit</label>
     <input type="date" id="visitDate" name="visitDate" required>
 
-<label for="eaterie">Select Eaterie</label>
+    <label for="hostelMesses">Select Eaterie</label>
+    <select id="hostelMesses" onchange="handleDropdownChange(this)">
+      <option value="">-- Hostel Messes --</option>
+      <option>Hostel 1 Mess</option>
+      <option>Hostel 2 Mess</option>
+      <option>Hostel 3 Mess</option>
+      <option>Hostel 5 Mess</option>
+      <option>Hostel 6 Mess</option>
+      <option>Hostel 9 Mess</option>
+      <option>Hostel 10 Mess</option>
+      <option>Hostel 11 Mess</option>
+      <option>Hostel 12 Mess</option>
+      <option>Hostel 13 Mess</option>
+      <option>Hostel 14 Mess</option>
+      <option>Hostel 15 Mess</option>
+      <option>Hostel 16 Mess</option>
+      <option>Hostel 17 Mess</option>
+      <option>Hostel 18 Mess</option>
+    </select>
 
-<select id="hostelMess" onchange="handleDropdownChange(this)">
-  <option value="">-- Hostel Messes --</option>
-  <option value="Hostel 1 Mess">Hostel 1 Mess</option>
-  <option value="Hostel 2 Mess">Hostel 2 Mess</option>
-  <option value="Hostel 3 Mess">Hostel 3 Mess</option>
-  <option value="Hostel 5 Mess">Hostel 5 Mess</option>
-  <option value="Hostel 6 Mess">Hostel 6 Mess</option>
-  <option value="Hostel 9 Mess">Hostel 9 Mess</option>
-  <option value="Hostel 10 Mess">Hostel 10 Mess</option>
-  <option value="Hostel 11 Mess">Hostel 11 Mess</option>
-  <option value="Hostel 12 Mess">Hostel 12 Mess</option>
-  <option value="Hostel 13 Mess">Hostel 13 Mess</option>
-  <option value="Hostel 14 Mess">Hostel 14 Mess</option>
-  <option value="Hostel 15 Mess">Hostel 15 Mess</option>
-  <option value="Hostel 16 Mess">Hostel 16 Mess</option>
-  <option value="Hostel 17 Mess">Hostel 17 Mess</option>
-  <option value="Hostel 18 Mess">Hostel 18 Mess</option>
-</select>
+    <select id="nightCanteens" onchange="handleDropdownChange(this)">
+      <option value="">-- Night Canteens --</option>
+      <option>H2 Night Canteen</option>
+      <option>H3 Night Canteen</option>
+      <option>H6 Night Canteen</option>
+      <option>H8 Night Canteen</option>
+      <option>H10 Night Canteen</option>
+      <option>H11 Night Canteen</option>
+      <option>H12 Night Canteen</option>
+    </select>
 
-<select id="nightCanteens" onchange="handleDropdownChange(this)">
-  <option value="">-- Night Canteens --</option>
-  <option value="H2 Night Canteen">H2 Night Canteen</option>
-  <option value="H3 Night Canteen">H3 Night Canteen</option>
-  <option value="H6 Night Canteen">H6 Night Canteen</option>
-  <option value="H8 Night Canteen">H8 Night Canteen</option>
-  <option value="H10 Night Canteen">H10 Night Canteen</option>
-  <option value="H11 Night Canteen">H11 Night Canteen</option>
-  <option value="H12 Night Canteen">H12 Night Canteen</option>
-</select>
+    <select id="instituteEateries" onchange="handleDropdownChange(this)">
+      <option value="">-- Institute Eateries --</option>
+      <option>Café Coffee Day (CCD)</option>
+      <option>Domino’s</option>
+      <option>Chaayos (near SOM)</option>
+      <option>Chaayos (H5)</option>
+      <option>Amul Parlour</option>
+      <option>Aromas Dhaba</option>
+      <option>Gulmohar Garden</option>
+      <option>Gulmohar Restaurant</option>
+      <option>Café 92</option>
+      <option>Civil Cafe</option>
+      <option>H3 Juice &amp; Fruit</option>
+      <option>Health Juice Centre</option>
+      <option>Kresit Canteen</option>
+      <option>Shiru Cafe</option>
+      <option>Library Cafeteria</option>
+      <option>Staff Canteen</option>
+      <option>CheA Canteen</option>
+      <option>EE Canteen</option>
+      <option>Corn Shop</option>
+    </select>
 
-<select id="instituteEateries" onchange="handleDropdownChange(this)">
-  <option value="">-- Institute Eateries --</option>
-<option value="Café Coffee Day (CCD)">Café Coffee Day (CCD)</option>
-<option value="Domino’s">Domino’s</option>
-<option value="Chaayos (near SOM)">Chaayos (near SOM)</option>
-<option value="Chaayos (H5)">Chaayos (H5)</option>
-<option value="Amul Parlour">Amul Parlour</option>
-<option value="Aromas Dhaba">Aromas Dhaba</option>
-<option value="Gulmohar Garden">Gulmohar Garden</option>
-<option value="Gulmohar Restaurant">Gulmohar Restaurant</option>
-<option value="Café 92">Café 92</option>
-<option value="Civil Cafe">Civil Cafe</option>
-<option value="H3 Juice & Fruit">H3 Juice & Fruit</option>
-<option value="Health Juice Centre">Health Juice Centre</option>
-<option value="Kresit Canteen">Kresit Canteen</option>
-<option value="Shiru Cafe">Shiru Cafe</option>
-<option value="Library Cafeteria">Library Cafeteria</option>
-<option value="Staff Canteen">Staff Canteen</option>
-<option value="CheA Canteen">CheA Canteen</option>
-<option value="EE Canteen">EE Canteen</option>
-<option value="Corn Shop">Corn Shop</option>
-</select>
+    <!-- hidden field carrying the selected eatery -->
+    <input type="hidden" id="eaterie" name="eaterie" required>
 
-<!-- Hidden input that will carry the selected eatery -->
-<input type="hidden" id="eaterie" name="eaterie" required>
-
-<script>
-  function handleDropdownChange(changedDropdown) {
-    // Reset the other dropdowns
-    ['hostelMess', 'nightCanteens', 'instituteEateries'].forEach(id => {
-      if (id !== changedDropdown.id) {
-        document.getElementById(id).selectedIndex = 0;
-      }
-    });
-
-    // Set the hidden input value
-    document.getElementById("eaterie").value = changedDropdown.value;
-  }
-</script>
-
+    <!-- Star rating groups -->
     <label>Overall Star Rating:</label>
     <div class="stars">
       <input type="radio" id="overall5" name="overallRating" value="5"><label for="overall5">★</label>
@@ -185,21 +166,22 @@
     <div class="inline"><input type="checkbox" name="mealTime" value="Snacks"> Snacks</div>
     <div class="inline"><input type="checkbox" name="mealTime" value="Other"> Other</div>
 
-    <label>Hygiene Complaints (Check all that apply)</label>
+    <label>Hygiene Complaints</label>
     <div><input type="checkbox" name="hygieneComplaints" value="Unclean tables or floors"> Unclean tables or floors</div>
     <div><input type="checkbox" name="hygieneComplaints" value="Dirty utensils or plates"> Dirty utensils or plates</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="No hand-wash station"> No hand-wash station</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="No hand‑wash station"> No hand‑wash station</div>
     <div><input type="checkbox" name="hygieneComplaints" value="Pests noticed"> Pests (flies/rodents) noticed</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Foul smells in dining area"> Foul smells in dining area</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Foul smells"> Foul smells in dining area</div>
     <div><input type="checkbox" name="hygieneComplaints" value="Greasy counters"> Greasy or sticky counters/surfaces</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Food spillage not cleaned"> Food spillage not cleaned</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Improper food storage"> Improper food storage</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Food spillage"> Food spillage not cleaned</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Improper storage"> Improper food storage</div>
 
     <label for="detailedFeedback">Detailed Feedback</label>
     <textarea id="detailedFeedback" name="detailedFeedback" rows="4" required></textarea>
 
     <label for="reviewImage">Upload a Picture (optional)</label>
-    <input type="file" id="reviewImage" name="reviewImage" accept="image/*" capture="environment">
+    <input type="file" id="reviewImage" name="reviewImage"
+           accept="image/*" capture="environment">
 
     <button type="submit">Submit Review</button>
   </form>
@@ -210,59 +192,50 @@
   </div>
 
   <script>
-    // Called when the hidden iframe finishes the POST
+    // keep the single selected eatery in hidden input
+    function handleDropdownChange(dd) {
+      ['hostelMesses','nightCanteens','instituteEateries']
+        .forEach(id=> { if(id!==dd.id) document.getElementById(id).selectedIndex=0; });
+      document.getElementById('eaterie').value = dd.value;
+    }
+
+    // after iframe POST, show success & reload
     function onFormSubmitted() {
       alert("Submitted successfully!");
       document.getElementById("reviewForm").reset();
       loadReviews();
     }
 
-    // JSONP loader to fetch & render last 5 reviews
+    // JSONP fetch last 5 reviews
     function loadReviews() {
-      const script = document.createElement("script");
-      script.src = 
-        "https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec"
-        + "?callback=renderReviews";
-      document.body.appendChild(script);
+      const s = document.createElement("script");
+      s.src = "https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec?callback=renderReviews";
+      document.body.appendChild(s);
     }
 
-    // JSONP callback: rows = full sheet as array of arrays
+    // render Reviews callback
     function renderReviews(rows) {
-      const data = rows.slice(1).slice(-5).reverse();
+      const out = rows.slice(1).slice(-5).reverse();
       const c = document.getElementById("reviewsList");
       c.innerHTML = "";
-      data.forEach(r => {
-        const div = document.createElement("div");
-        div.className = "review";
-        div.innerHTML = `
+      out.forEach(r=>{
+        const d=document.createElement("div");
+        d.className="review";
+        d.innerHTML=`
           <h4>${r[2]}</h4>
           <p><strong>Date:</strong> ${r[1]} | <strong>Email:</strong> ${r[0]}</p>
           <p><strong>Service:</strong> ${r[3]} | <strong>Meal:</strong> ${r[4]}</p>
           <p><strong>Ratings:</strong> Overall ${r[5]}★ | Food ${r[6]}★ | Hygiene ${r[7]}★</p>
           <p><strong>Complaints:</strong> ${r[8]}</p>
           <p>${r[9]}</p>
-          ${r[10] ? `<img src="${r[10]}" style="max-width:150px;margin-top:8px;border-radius:6px;">` : ""}
+          ${r[10]?`<img src="${r[10]}" style="max-width:150px;margin-top:8px;border-radius:6px;">`:``}
         `;
-        c.appendChild(div);
+        c.appendChild(d);
       });
     }
 
     // initial load
     loadReviews();
-    // Combine eatery dropdowns into one final "eaterie" value before submit
-document.getElementById("reviewForm").addEventListener("submit", function (e) {
-  const hostelMess = document.getElementById("hostelMesses").value;
-  const nightCanteen = document.getElementById("hostelNightCanteens").value;
-  const instituteEatery = document.getElementById("instituteEateries").value;
-
-  const selected = hostelMess || nightCanteen || instituteEatery;
-
-  const eaterieInput = document.createElement("input");
-  eaterieInput.type = "hidden";
-  eaterieInput.name = "eaterie";
-  eaterieInput.value = selected || "";
-  this.appendChild(eaterieInput);
-});
   </script>
 </body>
 </html>
