@@ -189,7 +189,7 @@
           <p><strong>Ratings:</strong> Overall ${r[5]}★ | Food ${r[6]}★ | Hygiene ${r[7]}★</p>
           <p><strong>Complaints:</strong> ${r[8]}</p>
           <p>${r[9]}</p>
-         ${r[10] && r[10].includes('https://') ? `<img src="${r[10].replace('/view?usp=sharing', '').replace('/file/d/', '/uc?id=')}" alt="Uploaded Image" style="max-width:150px;margin-top:8px;border-radius:6px;">` : ''}
+        ${r[10] && r[10].startsWith('data:image') ? `<img src="${r[10]}" alt="Uploaded Image" style="max-width:150px;margin-top:8px;border-radius:6px;">` : ''}
         `;
         c.appendChild(d);
       });
