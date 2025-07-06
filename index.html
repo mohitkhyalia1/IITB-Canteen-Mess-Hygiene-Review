@@ -47,10 +47,10 @@
 <body>
   <h1>IITB Canteen & Mess Hygiene Complaint Form</h1>
 
-<iframe name="submitFrame" style="display:none" id="submitFrame"></iframe>
+  <iframe name="submitFrame" style="display:none" onload="onFormSubmitted()"></iframe>
 
   <form id="reviewForm" method="POST" target="submitFrame" enctype="multipart/form-data"
-        action="https://script.google.com/macros/s/AKfycbymNmEgWX6Tb_Bz8V_bEZtC9r-OJp80MWenvDHSYOqHMG-w4z7hvVNpso7t_PeTyWuC5g/exec">
+    action="https://script.google.com/macros/s/AKfycbymNmEgWX6Tb_Bz8V_bEZtC9r-OJp80MWenvDHSYOqHMG-w4z7hvVNpso7t_PeTyWuC5g/exec">
 
     <label for="email">Your IITB Email</label>
     <input type="email" id="email" name="email" required>
@@ -84,8 +84,7 @@
       <option>Corn Shop</option>
     </select>
     <input type="hidden" id="eaterie" name="eaterie" required>
-    <input type="text" id="eaterieRequiredFake" name="eaterieRequiredFake" style="position:absolute; left:-9999px;" tabindex="-1" autocomplete="off" required>
-
+    
     <label>Overall Star Rating:</label>
     <div class="stars">
       <input type="radio" id="overall5" name="overallRating" value="5"><label for="overall5">★</label>
@@ -158,7 +157,7 @@
       document.getElementById('eaterie').value = dd.value;
     }
 
-window.onFormSubmitted = function() {
+    function onFormSubmitted() {
       alert("Submitted successfully!");
       const form = document.getElementById("reviewForm");
       const btn = form.querySelector('button[type="submit"]');
@@ -201,18 +200,10 @@ window.onFormSubmitted = function() {
         e.preventDefault();
         return alert('Please use your IITB email (ending with @iitb.ac.in)');
       }
-      const eaterieValue = document.getElementById('eaterie').value;
-if (!eaterieValue) {
-  e.preventDefault();
-  const fakeInput = document.getElementById('eaterieRequiredFake');
-  fakeInput.style.display = 'block';
-  fakeInput.focus();
-  fakeInput.setCustomValidity("Please select one eatery.");
-  fakeInput.reportValidity();
-  fakeInput.setCustomValidity("");
-  fakeInput.style.display = 'none';
-  return;
-}
+      if (!document.getElementById('eaterie').value) {
+        e.preventDefault();
+        return alert('Please select one eatery before submitting.');
+      }
       
       const btn = this.querySelector('button[type="submit"]');
       btn.disabled = true;
