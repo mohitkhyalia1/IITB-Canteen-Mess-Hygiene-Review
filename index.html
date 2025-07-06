@@ -174,7 +174,7 @@
       s.src = "https://script.google.com/macros/s/AKfycbymNmEgWX6Tb_Bz8V_bEZtC9r-OJp80MWenvDHSYOqHMG-w4z7hvVNpso7t_PeTyWuC5g/exec?callback=renderReviews";
       document.body.appendChild(s);
     }
-
+    
     function renderReviews(rows) {
       const data = rows.slice(1).slice(-5).reverse();
       const c = document.getElementById('reviewsList');
