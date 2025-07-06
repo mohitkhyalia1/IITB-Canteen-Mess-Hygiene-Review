@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>IITB Canteen & Mess Hygiene Complaint Form</title>
+  <title>IITB Canteen &amp; Mess Hygiene Complaint Form</title>
   <style>
     body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f7f7f7 }
     h1 { text-align:center; margin:30px 0 10px }
@@ -11,23 +11,19 @@
       padding:24px 20px; border-radius:12px; box-shadow:0 2px 12px rgba(0,0,0,0.08);
     }
     label { display:block; margin-top:18px; font-weight:bold }
-    input, textarea, select {
-      width:100%; padding:10px; margin-top:7px;
+    input, textarea, select, button {
+      width:100%; padding:10px; margin-top:7px; box-sizing:border-box;
       border:1px solid #ccc; border-radius:6px; background:#fafafa;
-      font-size:16px; box-sizing:border-box; transition:border 0.2s;
+      font-size:16px; transition:border 0.2s;
     }
     input:focus, textarea:focus, select:focus {
-      border:1.5px solid #0078d7; outline:none; background:#fff;
+      border:1.5px solid #0078d7; background:#fff; outline:none;
     }
-    .inline { display:inline-block; margin-right:12px; margin-top:8px; font-size:15px }
-    .stars {
-      display:flex; flex-direction:row-reverse; justify-content:flex-start;
-      margin:7px 0 5px;
-    }
+    .inline { display:inline-block; width:auto; margin-right:12px; font-size:15px }
+    .stars { display:flex; flex-direction:row-reverse; justify-content:flex-start; margin:7px 0; }
     .stars input { display:none }
     .stars label {
-      padding:5px; font-size:28px; color:#ccc; cursor:pointer;
-      transition:color 0.2s;
+      padding:5px; font-size:28px; color:#ccc; cursor:pointer; transition:color 0.2s;
     }
     .stars input:checked ~ label,
     .stars label:hover,
@@ -35,32 +31,30 @@
     .review { border-bottom:1px solid #eee; padding:12px 0 }
     .review h4 { margin:0 0 5px }
     button {
-      margin-top:24px; padding:12px 0; font-size:17px;
-      width:100%; background:#0078d7; color:#fff;
-      border:none; border-radius:6px; cursor:pointer;
-      transition:background 0.2s;
+      background:#0078d7; color:#fff; border:none; border-radius:6px;
+      cursor:pointer; margin-top:24px; font-size:17px; transition:background 0.2s;
     }
     button:hover { background:#005fa3 }
     @media(max-width:600px) {
       form, .reviews { padding:12px 4vw }
-      .inline { display:block; margin-right:0 }
+      .inline { display:block; margin:8px 0; }
       .stars label { font-size:22px; padding:3px }
-      h1{ font-size:22px; margin-top:18px }
+      h1 { font-size:22px; margin-top:18px }
       input, textarea, select, button { font-size:15px; padding:8px }
     }
   </style>
 </head>
 <body>
-  <h1>IITB Canteen &amp; Mess Hygiene Complaint Form</h1>
+  <h1>IITB Canteen & Mess Hygiene Complaint Form</h1>
 
-  <!-- hidden iframe to accept POST and trigger onFormSubmitted -->
+  <!-- iframe to catch POST -->
   <iframe name="submitFrame" style="display:none" onload="onFormSubmitted()"></iframe>
 
   <form id="reviewForm"
-        action="https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec"
         method="POST"
         target="submitFrame"
-        enctype="multipart/form-data">
+        enctype="multipart/form-data"
+        action="https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec">
 
     <label for="email">Your IITB Email</label>
     <input type="email" id="email" name="email" required>
@@ -68,64 +62,35 @@
     <label for="visitDate">Date of Visit</label>
     <input type="date" id="visitDate" name="visitDate" required>
 
-    <label for="hostelMesses">Select Eaterie</label>
+    <label>Select Eaterie</label>
     <select id="hostelMesses" onchange="handleDropdownChange(this)">
       <option value="">-- Hostel Messes --</option>
-      <option>Hostel 1 Mess</option>
-      <option>Hostel 2 Mess</option>
-      <option>Hostel 3 Mess</option>
-      <option>Hostel 5 Mess</option>
-      <option>Hostel 6 Mess</option>
-      <option>Hostel 9 Mess</option>
-      <option>Hostel 10 Mess</option>
-      <option>Hostel 11 Mess</option>
-      <option>Hostel 12 Mess</option>
-      <option>Hostel 13 Mess</option>
-      <option>Hostel 14 Mess</option>
-      <option>Hostel 15 Mess</option>
-      <option>Hostel 16 Mess</option>
-      <option>Hostel 17 Mess</option>
-      <option>Hostel 18 Mess</option>
+      <option>Hostel 1 Mess</option><option>Hostel 2 Mess</option><option>Hostel 3 Mess</option>
+      <option>Hostel 5 Mess</option><option>Hostel 6 Mess</option><option>Hostel 9 Mess</option>
+      <option>Hostel 10 Mess</option><option>Hostel 11 Mess</option><option>Hostel 12 Mess</option>
+      <option>Hostel 13 Mess</option><option>Hostel 14 Mess</option><option>Hostel 15 Mess</option>
+      <option>Hostel 16 Mess</option><option>Hostel 17 Mess</option><option>Hostel 18 Mess</option>
     </select>
-
     <select id="nightCanteens" onchange="handleDropdownChange(this)">
       <option value="">-- Night Canteens --</option>
-      <option>H2 Night Canteen</option>
-      <option>H3 Night Canteen</option>
-      <option>H6 Night Canteen</option>
-      <option>H8 Night Canteen</option>
-      <option>H10 Night Canteen</option>
-      <option>H11 Night Canteen</option>
+      <option>H2 Night Canteen</option><option>H3 Night Canteen</option><option>H6 Night Canteen</option>
+      <option>H8 Night Canteen</option><option>H10 Night Canteen</option><option>H11 Night Canteen</option>
       <option>H12 Night Canteen</option>
     </select>
-
     <select id="instituteEateries" onchange="handleDropdownChange(this)">
       <option value="">-- Institute Eateries --</option>
-      <option>Café Coffee Day (CCD)</option>
-      <option>Domino’s</option>
-      <option>Chaayos (near SOM)</option>
-      <option>Chaayos (H5)</option>
-      <option>Amul Parlour</option>
-      <option>Aromas Dhaba</option>
-      <option>Gulmohar Garden</option>
-      <option>Gulmohar Restaurant</option>
-      <option>Café 92</option>
-      <option>Civil Cafe</option>
-      <option>H3 Juice &amp; Fruit</option>
-      <option>Health Juice Centre</option>
-      <option>Kresit Canteen</option>
-      <option>Shiru Cafe</option>
-      <option>Library Cafeteria</option>
-      <option>Staff Canteen</option>
-      <option>CheA Canteen</option>
-      <option>EE Canteen</option>
+      <option>Café Coffee Day (CCD)</option><option>Domino’s</option><option>Chaayos (near SOM)</option>
+      <option>Chaayos (H5)</option><option>Amul Parlour</option><option>Aromas Dhaba</option>
+      <option>Gulmohar Garden</option><option>Gulmohar Restaurant</option><option>Café 92</option>
+      <option>Civil Cafe</option><option>H3 Juice &amp; Fruit</option><option>Health Juice Centre</option>
+      <option>Kresit Canteen</option><option>Shiru Cafe</option><option>Library Cafeteria</option>
+      <option>Staff Canteen</option><option>CheA Canteen</option><option>EE Canteen</option>
       <option>Corn Shop</option>
     </select>
 
-    <!-- hidden field carrying the selected eatery -->
-    <input type="hidden" id="eaterie" name="eaterie" required>
+    <!-- carries the one selected value -->
+    <input type="hidden" id="eaterie" name="eaterie">
 
-    <!-- Star rating groups -->
     <label>Overall Star Rating:</label>
     <div class="stars">
       <input type="radio" id="overall5" name="overallRating" value="5"><label for="overall5">★</label>
@@ -170,18 +135,17 @@
     <div><input type="checkbox" name="hygieneComplaints" value="Unclean tables or floors"> Unclean tables or floors</div>
     <div><input type="checkbox" name="hygieneComplaints" value="Dirty utensils or plates"> Dirty utensils or plates</div>
     <div><input type="checkbox" name="hygieneComplaints" value="No hand‑wash station"> No hand‑wash station</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Pests noticed"> Pests (flies/rodents) noticed</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Foul smells"> Foul smells in dining area</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Greasy counters"> Greasy or sticky counters/surfaces</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Food spillage"> Food spillage not cleaned</div>
-    <div><input type="checkbox" name="hygieneComplaints" value="Improper storage"> Improper food storage</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Pests noticed"> Pests noticed</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Foul smells"> Foul smells</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Greasy counters"> Greasy counters</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Food spillage"> Food spillage</div>
+    <div><input type="checkbox" name="hygieneComplaints" value="Improper storage"> Improper storage</div>
 
     <label for="detailedFeedback">Detailed Feedback</label>
     <textarea id="detailedFeedback" name="detailedFeedback" rows="4" required></textarea>
 
     <label for="reviewImage">Upload a Picture (optional)</label>
-    <input type="file" id="reviewImage" name="reviewImage"
-           accept="image/*" capture="environment">
+    <input type="file" id="reviewImage" name="reviewImage" accept="image/*" capture="environment">
 
     <button type="submit">Submit Review</button>
   </form>
@@ -192,47 +156,63 @@
   </div>
 
   <script>
-    // keep the single selected eatery in hidden input
+    // enforce single dropdown & populate hidden eaterie
     function handleDropdownChange(dd) {
       ['hostelMesses','nightCanteens','instituteEateries']
-        .forEach(id=> { if(id!==dd.id) document.getElementById(id).selectedIndex=0; });
+        .forEach(id => { if(id!==dd.id) document.getElementById(id).selectedIndex = 0; });
       document.getElementById('eaterie').value = dd.value;
     }
 
-    // after iframe POST, show success & reload
+    // only fire on real submit, not initial iframe load
+    let firstFrameLoad = true;
     function onFormSubmitted() {
+      if (firstFrameLoad) { firstFrameLoad = false; return; }
       alert("Submitted successfully!");
-      document.getElementById("reviewForm").reset();
+      reviewForm.reset();
       loadReviews();
     }
 
-    // JSONP fetch last 5 reviews
+    // JSONP pull last 5 rows
     function loadReviews() {
-      const s = document.createElement("script");
-      s.src = "https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec?callback=renderReviews";
+      const s = document.createElement('script');
+      s.src = "https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec"
+            + "?callback=renderReviews";
       document.body.appendChild(s);
     }
 
-    // render Reviews callback
+    // JSONP callback
     function renderReviews(rows) {
-      const out = rows.slice(1).slice(-5).reverse();
-      const c = document.getElementById("reviewsList");
-      c.innerHTML = "";
-      out.forEach(r=>{
-        const d=document.createElement("div");
-        d.className="review";
-        d.innerHTML=`
+      const data = rows.slice(1).slice(-5).reverse();
+      const c = document.getElementById('reviewsList');
+      c.innerHTML = '';
+      data.forEach(r => {
+        const d = document.createElement('div');
+        d.className = 'review';
+        d.innerHTML = `
           <h4>${r[2]}</h4>
           <p><strong>Date:</strong> ${r[1]} | <strong>Email:</strong> ${r[0]}</p>
           <p><strong>Service:</strong> ${r[3]} | <strong>Meal:</strong> ${r[4]}</p>
           <p><strong>Ratings:</strong> Overall ${r[5]}★ | Food ${r[6]}★ | Hygiene ${r[7]}★</p>
           <p><strong>Complaints:</strong> ${r[8]}</p>
           <p>${r[9]}</p>
-          ${r[10]?`<img src="${r[10]}" style="max-width:150px;margin-top:8px;border-radius:6px;">`:``}
+          ${r[10] ? `<img src="${r[10]}" style="max-width:150px;margin-top:8px;border-radius:6px;">` : ''}
         `;
         c.appendChild(d);
       });
     }
+
+    // before actual POST, validate IITB email & eatery chosen
+    document.getElementById('reviewForm').addEventListener('submit', function(e){
+      const email = document.getElementById('email').value.trim();
+      if (!email.endsWith('@iitb.ac.in')) {
+        e.preventDefault();
+        return alert('Please use your IITB email (ending with @iitb.ac.in)');
+      }
+      if (!document.getElementById('eaterie').value) {
+        e.preventDefault();
+        return alert('Please select one eatery before submitting.');
+      }
+    });
 
     // initial load
     loadReviews();
