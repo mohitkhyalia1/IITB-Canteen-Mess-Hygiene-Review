@@ -47,7 +47,7 @@
 <body>
   <h1>IITB Canteen & Mess Hygiene Complaint Form</h1>
 
-  <iframe name="submitFrame" style="display:none" onload="onFormSubmitted()"></iframe>
+<iframe name="submitFrame" style="display:none" id="submitFrame"></iframe>
 
   <form id="reviewForm" method="POST" target="submitFrame" enctype="multipart/form-data"
         action="https://script.google.com/macros/s/AKfycbymNmEgWX6Tb_Bz8V_bEZtC9r-OJp80MWenvDHSYOqHMG-w4z7hvVNpso7t_PeTyWuC5g/exec">
@@ -84,7 +84,7 @@
       <option>Corn Shop</option>
     </select>
     <input type="hidden" id="eaterie" name="eaterie" required>
-    <input type="text" id="eaterieRequiredFake" style="display:none" required>
+    <input type="text" id="eaterieRequiredFake" name="eaterieRequiredFake" style="position:absolute; left:-9999px;" tabindex="-1" autocomplete="off" required>
 
     <label>Overall Star Rating:</label>
     <div class="stars">
@@ -158,7 +158,7 @@
       document.getElementById('eaterie').value = dd.value;
     }
 
-    function onFormSubmitted() {
+window.onFormSubmitted = function() {
       alert("Submitted successfully!");
       const form = document.getElementById("reviewForm");
       const btn = form.querySelector('button[type="submit"]');
