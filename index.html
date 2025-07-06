@@ -163,14 +163,22 @@
       document.getElementById('eaterie').value = dd.value;
     }
 
-    // only fire on real submit, not initial iframe load
-    let firstFrameLoad = true;
-    function onFormSubmitted() {
-      if (firstFrameLoad) { firstFrameLoad = false; return; }
-      alert("Submitted successfully!");
-      reviewForm.reset();
-      loadReviews();
-    }
+function onFormSubmitted() {
+  alert("Submitted successfully!");
+
+  const form = document.getElementById("reviewForm");
+  const btn  = form.querySelector('button[type="submit"]');
+
+  // reset form fields
+  form.reset();
+
+  // re-enable the button
+  btn.disabled = false;
+  btn.textContent = 'Submit Review';
+
+  // reload the most recent reviews
+  loadReviews();
+}
 
     // JSONP pull last 5 rows
     function loadReviews() {
@@ -201,18 +209,22 @@
       });
     }
 
-    // before actual POST, validate IITB email & eatery chosen
-    document.getElementById('reviewForm').addEventListener('submit', function(e){
-      const email = document.getElementById('email').value.trim();
-      if (!email.endsWith('@iitb.ac.in')) {
-        e.preventDefault();
-        return alert('Please use your IITB email (ending with @iitb.ac.in)');
-      }
-      if (!document.getElementById('eaterie').value) {
-        e.preventDefault();
-        return alert('Please select one eatery before submitting.');
-      }
-    });
+document.getElementById('reviewForm').addEventListener('submit', function(e){
+  const email = document.getElementById('email').value.trim();
+  if (!email.endsWith('@iitb.ac.in')) {
+    e.preventDefault();
+    return alert('Please use your IITB email (ending with @iitb.ac.in)');
+  }
+  if (!document.getElementById('eaterie').value) {
+    e.preventDefault();
+    return alert('Please select one eatery before submitting.');
+  }
+
+  // Disable the submit button to prevent double‑clicking
+  const btn = this.querySelector('button[type="submit"]');
+  btn.disabled = true;
+  btn.textContent = 'Submitting…';
+});
 
     // initial load
     loadReviews();
