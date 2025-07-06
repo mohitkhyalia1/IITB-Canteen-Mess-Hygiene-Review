@@ -54,7 +54,7 @@
         method="POST"
         target="submitFrame"
         enctype="multipart/form-data"
-        action="https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec">
+        action="https://script.google.com/macros/s/AKfycbwhdW929eFCuuLN9M3hQSFtNiQq75uzfFyvR9490YbxzJ9oN04xMenJMbWWZxoqxsKvOQ/exec">
 
     <label for="email">Your IITB Email</label>
     <input type="email" id="email" name="email" required>
@@ -183,7 +183,7 @@ function onFormSubmitted() {
     // JSONP pull last 5 rows
     function loadReviews() {
       const s = document.createElement('script');
-      s.src = "https://script.google.com/macros/s/AKfycbwYn_0IjTDSNccMtgEJwSSR5ipLipaDZG0vrDukaAgAEsBUumu0aARTmsD9IemJRQcW2Q/exec"
+      s.src = "https://script.google.com/macros/s/AKfycbwhdW929eFCuuLN9M3hQSFtNiQq75uzfFyvR9490YbxzJ9oN04xMenJMbWWZxoqxsKvOQ/exec"
             + "?callback=renderReviews";
       document.body.appendChild(s);
     }
