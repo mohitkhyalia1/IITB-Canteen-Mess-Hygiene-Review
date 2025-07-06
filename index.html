@@ -50,7 +50,7 @@
   <iframe name="submitFrame" style="display:none" onload="onFormSubmitted()"></iframe>
 
   <form id="reviewForm" method="POST" target="submitFrame" enctype="multipart/form-data"
-        action="https://script.google.com/macros/s/AKfycbwhdW929eFCuuLN9M3hQSFtNiQq75uzfFyvR9490YbxzJ9oN04xMenJMbWWZxoqxsKvOQ/exec">
+        action="https://script.google.com/macros/s/AKfycbymNmEgWX6Tb_Bz8V_bEZtC9r-OJp80MWenvDHSYOqHMG-w4z7hvVNpso7t_PeTyWuC5g/exec">
 
     <label for="email">Your IITB Email</label>
     <input type="email" id="email" name="email" required>
@@ -84,6 +84,7 @@
       <option>Corn Shop</option>
     </select>
     <input type="hidden" id="eaterie" name="eaterie" required>
+    <input type="text" id="eaterieRequiredFake" style="display:none" required>
 
     <label>Overall Star Rating:</label>
     <div class="stars">
@@ -170,7 +171,7 @@
 
     function loadReviews() {
       const s = document.createElement('script');
-      s.src = "https://script.google.com/macros/s/AKfycbwhdW929eFCuuLN9M3hQSFtNiQq75uzfFyvR9490YbxzJ9oN04xMenJMbWWZxoqxsKvOQ/exec?callback=renderReviews";
+      s.src = "https://script.google.com/macros/s/AKfycbymNmEgWX6Tb_Bz8V_bEZtC9r-OJp80MWenvDHSYOqHMG-w4z7hvVNpso7t_PeTyWuC5g/exec?callback=renderReviews";
       document.body.appendChild(s);
     }
 
@@ -188,7 +189,7 @@
           <p><strong>Ratings:</strong> Overall ${r[5]}★ | Food ${r[6]}★ | Hygiene ${r[7]}★</p>
           <p><strong>Complaints:</strong> ${r[8]}</p>
           <p>${r[9]}</p>
-          ${r[10] ? `<img src="${r[10]}" style="max-width:150px;margin-top:8px;border-radius:6px;">` : ''}
+         ${r[10] && r[10].includes('https://') ? `<img src="${r[10].replace('/view?usp=sharing', '').replace('/file/d/', '/uc?id=')}" alt="Uploaded Image" style="max-width:150px;margin-top:8px;border-radius:6px;">` : ''}
         `;
         c.appendChild(d);
       });
@@ -200,11 +201,19 @@
         e.preventDefault();
         return alert('Please use your IITB email (ending with @iitb.ac.in)');
       }
-      if (!document.getElementById('eaterie').value) {
-        e.preventDefault();
-        return alert('Please select one eatery before submitting.');
-      }
-
+      const eaterieValue = document.getElementById('eaterie').value;
+if (!eaterieValue) {
+  e.preventDefault();
+  const fakeInput = document.getElementById('eaterieRequiredFake');
+  fakeInput.style.display = 'block';
+  fakeInput.focus();
+  fakeInput.setCustomValidity("Please select one eatery.");
+  fakeInput.reportValidity();
+  fakeInput.setCustomValidity("");
+  fakeInput.style.display = 'none';
+  return;
+}
+      
       const btn = this.querySelector('button[type="submit"]');
       btn.disabled = true;
       btn.textContent = 'Submitting…';
