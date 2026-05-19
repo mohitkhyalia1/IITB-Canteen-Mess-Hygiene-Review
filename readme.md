@@ -5,18 +5,6 @@ This platform allows students to submit feedback about hostel messes, night cant
 
 ---
 
-## 🌐 Live Website
-
-https://mohitkhyalia1.github.io/IITB-Canteen-Mess-Hygiene-Review/
-
----
-
-## 📂 GitHub Repository
-
-https://github.com/mohitkhyalia1/IITB-Canteen-Mess-Hygiene-Review
-
----
-
 # ✨ Features
 
 - 🏫 Review hostel messes, night canteens, and institute eateries
