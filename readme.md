@@ -121,16 +121,3 @@ This project was created to:
 - Real-time notifications
 - Image moderation system
 
----
-
-# 👨‍💻 Author
-
-**Mohit Khyalia**  
-B.Tech Mechanical Engineering  
-IIT Bombay
-
----
-
-# ⭐ Support
-
-If you found this project useful, consider giving the repository a star ⭐ on GitHub.
